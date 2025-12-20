@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { errorMiddleware } from "../../../packages/error-handler/error-middleware";
 import cookieParser from "cookie-parser";
+import redis from "../../../packages/libs/redis";
 
 const app = express();
 app.use(
@@ -21,7 +22,7 @@ app.get("/", (req, res) => {
 
 app.use(errorMiddleware);
 
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 6001;
 const server = app.listen(port, () => {
   console.log(`Auth server is running at https://localhost:${port}`);
 });
